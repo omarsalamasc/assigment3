@@ -19,3 +19,7 @@ class Game:
     for player in self.players: 
         player_roll = player.roll()  # using roll method from player
         print("[Game] Player " + str(index) + " rolled: " + str(player_roll)) 
+        if player_roll == self.guess:
+            player.score += 1  # add to check score 
+            print("[Game] Player " + str(index) + " Score incremented! New score: " + str(player.score))
+        index += 1 
