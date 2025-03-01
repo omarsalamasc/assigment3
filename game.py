@@ -12,3 +12,10 @@ class Game:
         # Set a random guess number between 1 and 6
         self.guess = random.randint(1, 6)
         print("[Game] Guess number for this round is " + str(self.guess))
+
+
+    def match(self):
+    index = 1   # initlaized on 1 index
+    for player in self.players: 
+        player_roll = player.roll()  # using roll method from player
+        print("[Game] Player " + str(index) + " rolled: " + str(player_roll)) 
