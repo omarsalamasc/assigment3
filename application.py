@@ -19,3 +19,26 @@ class Application:
             self.game.match()
             current_round += 1
 
+        self.display_winner()
+
+    def display_winner(self):
+        highest_score = -1
+        winner = 0
+        player_number = 1
+
+        for player in self.game.players:
+            print("[Application] Player " + str(player_number) + " final score: " + str(player.score))
+            
+            if player.score > highest_score:
+                highest_score = player.score
+                winner = player_number
+            
+            player_number += 1
+
+        print("\n[Application] Winner is Player " + str(winner) + " with a score of " + str(highest_score))
+
+
+# executing program from Entry Point
+if __name__ == "__main__":
+    app = Application()
+    app.run_game()
