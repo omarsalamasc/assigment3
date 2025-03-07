@@ -11,3 +11,11 @@ class Application:
     def run_game(self):
         rounds = 5
         current_round = 1
+
+        # creating a while loop to check for rounds 
+        while current_round <= rounds:
+            print("[Application] Starting Round: " + str(current_round))
+            self.game.start()
+            self.game.match()
+            current_round += 1
+
