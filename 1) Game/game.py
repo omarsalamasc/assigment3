@@ -13,13 +13,12 @@ class Game:
         self.guess = random.randint(1, 6)
         print("[Game] Guess number for this round is " + str(self.guess))
 
-
     def match(self):
-    index = 1   # initlaized on 1 index
-    for player in self.players: 
-        player_roll = player.roll()  # using roll method from player
-        print("[Game] Player " + str(index) + " rolled: " + str(player_roll)) 
-        if player_roll == self.guess:
-            player.score += 1  # add to check score 
-            print("[Game] Player " + str(index) + " Score incremented! New score: " + str(player.score))
-        index += 1 
+        index = 1   # initlaized on 1 index
+        for player in self.players:
+            player_roll = player.roll()  # using roll method from player
+            print("[Game] Player " + str(index) + " rolled: " + str(player_roll))
+            if player_roll == self.guess:
+                player.score += 1  # add to check score 
+                print("[Game] Player " + str(index) + " Score incremented! New score: " + str(player.score))
+            index += 1
