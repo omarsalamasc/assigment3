@@ -1,32 +1,27 @@
-# account class to manage banking transactions
+# base account class to manage basic banking functions
 class Account:
-    def __init__(self, acct_type):
-        self.acct_type = acct_type
-        self.min_balance = 500
+    def __init__(self):
         self.current_balance = 0
-        self.over_draft = 0  # Overdraft will be set in child classes
-
-    def withdraw(self, amount):
-        if self.current_balance - amount < -self.over_draft:
-            print("Cannot withdraw: Overdraft limit exceeded.")
-        else:
-            self.current_balance -= amount
-            print("Withdrawal of", amount, "successful. Current balance:", self.current_balance)
-
+        self.over_draft = 0
+        self.acct_type = ""
+    
+    # deposit method to add money to account
     def deposit(self, amount):
-        self.current_balance += amount
-        print("Deposit of", amount, "successful. Current balance:", self.current_balance)
-
-    # Test the Account class
-    if __name__ == "__main__":
-        # Create a new savings account
-        savings = Account("savings")
-        
-        # Test deposit functionality
-        savings.deposit(1000)
-        
-        # Test withdrawal functionality
-        savings.withdraw(300)
-        
-        # Test overdraft scenario
-        savings.withdraw(800)
+        if amount > 0:
+            self.current_balance += amount
+            print("Deposited: $" + str(amount))
+            print("Current Balance: $" + str(self.current_balance))
+        else:
+            print("Invalid deposit amount")
+    
+    # withdraw method to take money from account
+    def withdraw(self, amount):
+        if amount > 0:
+            if self.current_balance - amount >= -self.over_draft:
+                self.current_balance -= amount
+                print("Withdrawn: $" + str(amount))
+                print("Current Balance: $" + str(self.current_balance))
+            else:
+                print("Insufficient funds - exceeds overdraft limit")
+        else:
+            print("Invalid withdrawal amount") 
